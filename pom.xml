@@ -10,7 +10,7 @@
     </parent>
     <groupId>cn.edu.bupt.www</groupId>
     <artifactId>aux-verification</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT-DEV</version>
     <name>aux-verification</name>
     <description>aux verification</description>
 

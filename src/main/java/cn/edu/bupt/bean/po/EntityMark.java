@@ -64,11 +64,11 @@ public class EntityMark {
         return (this.passed == 1); //只要是通过的情况就需要更新stmtEntities
     }
 
-    private static String tagPatternTailStr = "</[on][a-z]?>";
+    private static String tagPatternTailStr = "</[on][a-z0-9]*>";
     private static Pattern tagPatternTail = Pattern.compile(tagPatternTailStr);
     private static String otherTagHead = "<o>";
     private static String otherTagTail = "</o>";
-    private static String tagPatternHeadStr = "<[on][a-z]?>";
+    private static String tagPatternHeadStr = "<[on][a-z0-9]*>";
     private static Pattern tagPatternHead = Pattern.compile(tagPatternHeadStr);
     public String getNonTagContent(){
         // 将所有的标签匹配去除掉
@@ -108,7 +108,7 @@ public class EntityMark {
         //把每个<n*> 改成</o> , 若结尾不是</n*>则加上</o>
         Matcher matcher = tagPatternHead.matcher(content);
         String tagContent = matcher.replaceAll(otherTagTail);
-        String tagPattern = "</n[a-z]>$";
+        String tagPattern = "</n[a-z0-9]+>$";
 
         Pattern pattern = Pattern.compile(tagPattern);
         matcher = pattern.matcher(tagContent);
