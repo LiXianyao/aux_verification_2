@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Null;
 import java.util.List;
 
 @Entity
@@ -25,4 +26,11 @@ public class EntityReflect {
 
     @Column(name = "color")
     private String color;
+
+    @Column(name = "parent_id", nullable = true)
+    private Integer parentId;
+
+    // 只在查询时级联
+    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "parentId")
+    private List<EntityReflect> children;
 }
